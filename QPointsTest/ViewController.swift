@@ -18,8 +18,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        println("hier sind wir")
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,7 +27,6 @@ class ViewController: UIViewController {
 
 
     @IBAction func sendEnterMDPressed(sender: UIButton) {
-        println(enterMDfield.text)
         
         let httpMethod = "POST"
         let timeout = 15
@@ -54,26 +51,21 @@ class ViewController: UIViewController {
             queue: queue,
             completionHandler: {(response: NSURLResponse!,
                 data: NSData!,
-                error: NSError!) in
+                err: NSError!) in
                 
                 /* Now we may have access to the data but check if an error came back
                 first or not */
-                let typeLongName = _stdlib_getDemangledTypeName(data)
-                let tokens = split(typeLongName, { $0 == "." })
-                if let typeName = tokens.last {
-                    println("Type \(typeName).")
-                }
-                // if data.length > 0 && error == nil{
-                if let html = data {
-                let html = NSString(data: data, encoding: NSUTF8StringEncoding)
-                    println("html = \(html!)")
+                if data.length > 0 && err == nil{
+                // let html = NSString(data: data, encoding:NSUTF8StringEncoding)
+                    let html: NSDictionary = NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSDictionary
+                    println(html["nr"]!)
                     dispatch_async(dispatch_get_main_queue(),{
-                        self.displayResponseField.text = "\(html!)"
-                        });
-                } else if data.length == 0 && error == nil{
+                        self.displayResponseField.text = "\(html)"
+                    });
+                } else if data.length == 0 && err == nil{
                     println("Nothing was downloaded")
-                } else if error != nil{
-                    println("Error happened = \(error)")
+                } else if err != nil{
+                    println("Error happened = \(err)")
                 }
             }
         )
