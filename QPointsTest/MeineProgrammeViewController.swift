@@ -26,6 +26,17 @@ class MeineProgrammeViewController: UIViewController, UITableViewDataSource, UIT
         // Dispose of any resources that can be recreated.
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if segue.identifier == "showProgramDetail" {
+            let detailVieCon: ProgramDetailViewController = segue.destinationViewController as ProgramDetailViewController
+            let indexPath = self.tableVIew.indexPathForSelectedRow()
+            let thisProgram = programs[indexPath!.row]
+            detailVieCon.detailProgram = thisProgram
+        }
+        
+    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.programs.count
     }
@@ -43,7 +54,7 @@ class MeineProgrammeViewController: UIViewController, UITableViewDataSource, UIT
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
+        performSegueWithIdentifier("showProgramDetail", sender: self)
     }
     
     func requestProgramData() {
