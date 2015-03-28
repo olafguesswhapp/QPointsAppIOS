@@ -63,6 +63,11 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" id="ccf-Sh-N2G">
+                        <barButtonItem key="leftBarButtonItem" title="MyPrograms" id="4gP-GS-eN4">
+                            <connections>
+                                <segue destination="NtA-yd-vAU" kind="show" id="JEu-We-bZc"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Meine Programme" id="Sz2-Bx-bV4">
                             <connections>
                                 <segue destination="F2R-z3-ZZJ" kind="show" id="vFW-hx-NCR"/>
@@ -207,7 +212,99 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qgi-QV-0oq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1531.5" y="246.75"/>
+            <point key="canvasLocation" x="1584" y="50.25"/>
+        </scene>
+        <!--meineProgramme-->
+        <scene sceneID="g78-3z-Cnc">
+            <objects>
+                <viewController title="meineProgramme" id="NtA-yd-vAU" customClass="MeineProgrammeViewController" customModule="QPointsTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ETe-BU-CAm"/>
+                        <viewControllerLayoutGuide type="bottom" id="HeN-hB-j93"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="lkc-SB-HLm">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="bJp-Od-ZxO">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="programCell" id="VUW-FJ-oY0" customClass="programTableViewCell" customModule="QPointsTest" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VUW-FJ-oY0" id="oKU-ga-19K">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Program" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tj7-tW-jJ4">
+                                                    <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                                        <rect key="frame" x="8" y="11" width="242" height="21"/>
+                                                    </variation>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Punkte" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rZr-2r-0BA">
+                                                    <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                                        <rect key="frame" x="258" y="11" width="54" height="21"/>
+                                                    </variation>
+                                                </label>
+                                            </subviews>
+                                            <variation key="default">
+                                                <mask key="subviews">
+                                                    <exclude reference="tj7-tW-jJ4"/>
+                                                    <exclude reference="rZr-2r-0BA"/>
+                                                </mask>
+                                            </variation>
+                                            <variation key="heightClass=regular-widthClass=compact">
+                                                <mask key="subviews">
+                                                    <include reference="tj7-tW-jJ4"/>
+                                                    <include reference="rZr-2r-0BA"/>
+                                                </mask>
+                                            </variation>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="ProgramNameField" destination="tj7-tW-jJ4" id="YsQ-x3-a8s"/>
+                                            <outlet property="ProgramPointsField" destination="rZr-2r-0BA" id="vFE-1B-8PD"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="68" width="320" height="500"/>
+                                </variation>
+                                <connections>
+                                    <outlet property="dataSource" destination="NtA-yd-vAU" id="NTy-JZ-OHF"/>
+                                    <outlet property="delegate" destination="NtA-yd-vAU" id="hyS-oX-4Jf"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="bJp-Od-ZxO"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="bJp-Od-ZxO"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <value key="contentSizeForViewInPopover" type="size" width="320" height="568"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="tableVIew" destination="bJp-Od-ZxO" id="rXE-4f-EDL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ue3-13-fhI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1584" y="517.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="QwI-ec-6yA">
